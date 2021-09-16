@@ -19,5 +19,5 @@ from converter import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.cur)
+    path('', views.convert)
 ]
