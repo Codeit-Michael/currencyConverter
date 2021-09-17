@@ -11,5 +11,5 @@ for x in currency['rates']:
 
 class converterForm(forms.Form):
 	amount = forms.IntegerField()
-	myCurrency = forms.ChoiceField(choices=CURRENCY_CHOICE)
-	toCurrency = forms.ChoiceField(choices=CURRENCY_CHOICE)
+	my_currency = forms.ChoiceField(choices=CURRENCY_CHOICE)
+	to_currency = forms.ChoiceField(choices=CURRENCY_CHOICE)

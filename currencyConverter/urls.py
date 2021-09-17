@@ -18,6 +18,6 @@ from django.urls import path
 from converter import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.convert)
+	path('admin/', admin.site.urls),
+	path('', views.convert,name='convert')
 ]
