@@ -5,10 +5,12 @@
 	<title>Hello</title>
 </head>
 <body>
-
-	{% for x,y in currs.items %}
-		<p>{{x}}_-_-_-_-_{{y}}</p>
-	{% endfor %}
+	
+	<form method="post" action="">
+		{% csrf_token %}
+		{{myForm}}
+		
+	</form>
 
 </body>
 </html>
