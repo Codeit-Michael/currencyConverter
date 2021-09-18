@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +9,30 @@
 		body {
 			display: grid;
 			place-items: center;
-			background-image: url("img/myBG.png");
 			height: 95vh;
 			width: 95vw;
+			background: #1a2b3c;
 		}
 		.square {
 			padding: 20px;
 			border-radius: 25px;
 			height: 450px;
 			width: 580px;
-			background-color: #7aaf24;
+			background-color: #7a8924;
 		}
 
 		.center {
 			display: grid;
 			place-items: center;
 		}
+
+		.inner {
+			padding: 5px;
+			border-radius: 5px;
+			background-color: #7a0024;
+			color: #fff;
+		}
+
 	</style>
 
 </head>
@@ -31,9 +40,22 @@
 
 	<div class="square">		
 		<form action="{% url 'convert' %}" method="post" class="center">
+			<h1>CURRENCY CONVERTER APP</h1>
 			{% csrf_token %}
-			{{myForm.as_p}}
-			<button type="submit">Convert</button>
+			<div class="inner">
+				<label>Amount {{myForm.amount}}</label>
+			</div><br>
+			<div class="inner">
+				<label>Current Currency {{myForm.my_currency}}</label>
+			</div><br>
+			<div class="inner">
+				<label>Convert to {{myForm.to_currency}}</label>
+			</div><br>
+			<div class="inner">
+				<label for="newvalue">Converted Amount</label>
+				<input type="text" id="newvalue" name="newvalue" value={{converted_amount}} readonly>
+			</div><br>
+			<button type="submit" class="inner">Convert</button>
 		</form>
 	</div>
 
