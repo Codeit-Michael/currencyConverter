@@ -3,15 +3,40 @@
 <head>
 	<meta charset="utf-8">
 	<title>Hello</title>
+
+	<style>
+		body {
+			display: grid;
+			place-items: center;
+			background-image: url("img/myBG.png");
+			height: 95vh;
+			width: 95vw;
+		}
+		.square {
+			padding: 20px;
+			border-radius: 25px;
+			height: 450px;
+			width: 580px;
+			background-color: #7aaf24;
+		}
+
+		.center {
+			display: grid;
+			place-items: center;
+		}
+	</style>
+
 </head>
 <body>
-	
-	<form action="{% url 'convert' %}" method="post">
-		{% csrf_token %}
-		{{myForm}}
-		
-		<button type="submit">Convert</button>
-	</form>
+
+	<div class="square">		
+		<form action="{% url 'convert' %}" method="post" class="center">
+			{% csrf_token %}
+			{{myForm.as_p}}
+			<button type="submit">Convert</button>
+		</form>
+	</div>
+
 
 </body>
 </html>
