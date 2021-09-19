@@ -5,6 +5,7 @@ from .forms import converterForm
 
 # Create your views here.
 def convert(request):
+	converted_amount = 0
 	response = requests.get("https://api.exchangerate.host/latest")
 	my_json = response.json()
 	orig_amount = my_json['rates']
@@ -21,7 +22,5 @@ def convert(request):
 			converted_amount = eur_amount * orig_amount[to_currency]
 		else:
 			converted_amount = int(amount) * orig_amount[to_currency]
-
-		print(converted_amount)
-
+      
 	return render(request,'converter/home.html',{'myForm':myForm,'converted_amount':converted_amount})

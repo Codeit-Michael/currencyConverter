@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- FontAweome CDN Link for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-	  
+
     <style>
       /* Import Google Font - Poppins */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -155,61 +155,4 @@
     </div>
   </body>
 </html>
-=======
-	<style>
-		body {
-			display: grid;
-			place-items: center;
-			height: 95vh;
-			width: 95vw;
-			background: #1a2b3c;
-		}
-		.square {
-			padding: 20px;
-			border-radius: 25px;
-			height: 450px;
-			width: 580px;
-			background-color: #7a8924;
-		}
 
-		.center {
-			display: grid;
-			place-items: center;
-		}
-
-		.inner {
-			padding: 5px;
-			border-radius: 5px;
-			background-color: #7a0024;
-			color: #fff;
-		}
-
-	</style>
-
-</head>
-<body>
-
-	<div class="square">		
-		<form action="{% url 'convert' %}" method="post" class="center">
-			<h1>CURRENCY CONVERTER APP</h1>
-			{% csrf_token %}
-			<div class="inner">
-				<label>Amount {{myForm.amount}}</label>
-			</div><br>
-			<div class="inner">
-				<label>Current Currency {{myForm.my_currency}}</label>
-			</div><br>
-			<div class="inner">
-				<label>Convert to {{myForm.to_currency}}</label>
-			</div><br>
-			<div class="inner">
-				<label for="newvalue">Converted Amount</label>
-				<input type="text" id="newvalue" name="newvalue" value={{converted_amount}} readonly>
-			</div><br>
-			<button type="submit" class="inner">Convert</button>
-		</form>
-	</div>
-
-
-</body>
-</html>
