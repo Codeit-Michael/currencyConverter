@@ -1,42 +1,156 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Hello</title>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAweome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-	<style>
-		body {
-			display: grid;
-			place-items: center;
-			background-image: url("img/myBG.png");
-			height: 95vh;
-			width: 95vw;
-		}
-		.square {
-			padding: 20px;
-			border-radius: 25px;
-			height: 450px;
-			width: 580px;
-			background-color: #7aaf24;
-		}
+    <style>
+      /* Import Google Font - Poppins */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10px;
+    background: #675AFE;
+  }
+  ::selection{
+    color: #fff;
+    background: #675AFE;
+  }
+  .wrapper{
+    width: 370px;
+    padding: 30px;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+  }
+  .wrapper header{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .wrapper form{
+    margin: 40px 0 20px 0;
+  }
+  form :where(input, select, button){
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+  }
+  form p{
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  form input{
+    height: 50px;
+    font-size: 17px;
+    padding: 0 15px;
+    border: 1px solid #999;
+  }
+  form input:focus{
+    padding: 0 14px;
+    border: 2px solid #675AFE;
+  }
+  form .drop-list{
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .drop-list .select-box{
+    display: flex;
+    width: 115px;
+    height: 45px;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    border: 1px solid #999;
+  }
+  .select-box img{
+    max-width: 25px;
+  }
+  .select-box select{
+    width: auto;
+    font-size: 16px;
+    background: none;
+    margin: 0 -5px 0 5px;
+  }
+  .select-box select::-webkit-scrollbar{
+    width: 8px;
+  }
+  .select-box select::-webkit-scrollbar-track{
+    background: #fff;
+  }
+  .select-box select::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 8px;
+    border-right: 2px solid #ffffff;
+  }
+  .drop-list .icon{
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  form .exchange-rate{
+    font-size: 17px;
+    margin: 20px 0 30px;
+  }
+  form button{
+    height: 52px;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    background: #675AFE;
+    transition: 0.3s ease;
+  }
+  form button:hover{
+    background: #4534fe;
+  }
+</style>
 
-		.center {
-			display: grid;
-			place-items: center;
-		}
-	</style>
-
-</head>
-<body>
-
-	<div class="square">		
-		<form action="{% url 'convert' %}" method="post" class="center">
-			{% csrf_token %}
-			{{myForm.as_p}}
-			<button type="submit">Convert</button>
-		</form>
-	</div>
-
-
-</body>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>Currency Converter</header>
+      <form action="{% url 'convert' %}" method="post">
+        {% csrf_token %}
+        <div class="amount">
+          <p>Enter Amount</p>
+          {{myForm.amount}}
+        </div>
+        <div class="drop-list">
+          <div class="from">
+            <p>From</p>
+            <div class="select-box">
+              <!-- <img src="https://www.countryflags.io/us/flat/48.png" alt="flag"> -->
+              {{myForm.my_currency}}
+            </div>
+          </div>
+          <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+          <div class="to">
+            <p>To</p>
+            <div class="select-box">
+              <!-- <img src="https://www.countryflags.io/np/flat/48.png" alt="flag"> -->
+              {{myForm.to_currency}}
+            </div>
+          </div>
+        </div>
+        <input type="text" name="myAmount" value={{converted_amount}} readonly>
+        <button type="submit">Get Exchange Rate</button>
+      </form>
+    </div>
+  </body>
 </html>
