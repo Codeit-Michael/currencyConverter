@@ -9,6 +9,7 @@ def convert(request):
 	response = requests.get("https://api.exchangerate.host/latest")
 	my_json = response.json()
 	orig_amount = my_json['rates']
+	converted_amount = 0
 	myForm = converterForm()
 
 	if request.method == 'POST':
@@ -21,5 +22,5 @@ def convert(request):
 			converted_amount = eur_amount * orig_amount[to_currency]
 		else:
 			converted_amount = int(amount) * orig_amount[to_currency]
-
+      
 	return render(request,'converter/home.html',{'myForm':myForm,'converted_amount':converted_amount})
