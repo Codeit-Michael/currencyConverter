@@ -6,9 +6,8 @@ from .forms import converterForm
 # Create your views here.
 def convert(request):
 	converted_amount = 0
-	response = requests.get("https://api.exchangerate.host/latest")
-	my_json = response.json()
-	orig_amount = my_json['rates']
+	response = requests.get("https://api.exchangerate.host/latest").json()
+	orig_amount = response['rates']
 	converted_amount = 0
 	myForm = converterForm()
 
